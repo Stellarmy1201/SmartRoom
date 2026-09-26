@@ -905,6 +905,43 @@ void cycleBlindOverride()
 // ============================================================
 // RUN AUTOMATION
 // ============================================================
+void updateLedStrip()
+{
+  uint32_t color;
+
+  if (sensorFault)
+  {
+    bool flash = (millis() / 150) % 2;
+    color = flash ? ledStrip.Color(255, 0, 0) : ledStrip.Color(0, 0, 0);
+  }
+  else if (securityAlert)
+  {
+    bool flash = (millis() / 300) % 2;
+    color = flash ? ledStrip.Color(255, 0, 0) : ledStrip.Color(0, 0, 0);
+  }
+  else if (climateAlert)
+  {
+    color = ledStrip.Color(255, 120, 0);
+  }
+  else if (occupancyState == STATE_ACTIVE)
+  {
+    color = ledStrip.Color(0, 255, 0);
+  }
+  else if (occupancyState == STATE_IDLE)
+  {
+    color = ledStrip.Color(0, 0, 255);
+  }
+  else
+  {
+    color = ledStrip.Color(0, 0, 0);
+  }
+
+  for (int i = 0; i < LED_COUNT; i++)
+  {
+    ledStrip.setPixelColor(i, color);
+  }
+  ledStrip.show();
+}
 
 void enterFailsafe();
 void runAutomation()
@@ -928,6 +965,7 @@ void runAutomation()
     automaticBlindsRule();
   }
   updateStatusLED();
+  updateLedStrip();
 }
 
 
@@ -1311,6 +1349,7 @@ void loop()
   // ----------------------------------------------------------
 
   updateStatusLED();
+  updateLedStrip();
   checkButtons();
 
 
