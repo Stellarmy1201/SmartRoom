@@ -55,4 +55,5 @@ The ESP32 uses Wi-Fi and MQTT to transmit sensor data to Adafruit IO for remote 
 
 ## Project Team
 
-3707ICT Group Project – Griffith University.
+3707ICT Group Project – Griffith University
+Group members: Stella , Phoenix , Haruka
