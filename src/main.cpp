@@ -418,7 +418,7 @@ void readSensors()
   // LDR
   // ----------------------------------------------------------
 
-  lightLevel = analogRead(LDR_PIN);
+  lightLevel = 4095 - analogRead(LDR_PIN);
 
 
   // ----------------------------------------------------------
