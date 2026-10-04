@@ -1286,7 +1286,7 @@ void setup()
     Serial.println("--------------------------------------");
     Serial.println("Cloud credentials not configured.");
     Serial.println("Local Wokwi automation will still work.");
-    Serial.println("Add Adafruit IO username/key later.");
+    Serial.println("Add ThingSpeak MQTT credentials later.");
     Serial.println("--------------------------------------");
   }
 }
